@@ -30,7 +30,7 @@ import sys
 import tarfile
 import traceback
 from collections import OrderedDict
-from datetime import datetime
+from datetime import datetime, timezone
 from importlib import import_module
 from multiprocessing import Pool
 from random import choice
@@ -850,7 +850,7 @@ if __name__ == "__main__":
     run_modules()
 
     # Get program end time.
-    endTime = datetime.utcnow()
+    endTime = datetime.now(timezone.utc)
     total_runTime = endTime - startTime
     log.info("Modules finished at {0}.".format(endTime))
     log.info("Module runtime: {0}.".format(total_runTime))
