@@ -574,7 +574,7 @@ def modExec(module):
         dn = '{0}'.format(modName.upper())
 
     try:
-        modStart = datetime.utcnow()
+        modStart = datetime.now(timezone.utc)
         log.info("Running {0}".format(dn))
         modImport = 'modules.' + module
 
@@ -586,7 +586,7 @@ def modExec(module):
         except IndexError:
             pass
 
-        modEnd = datetime.utcnow()
+        modEnd = datetime.now(timezone.utc)
         modRuntime = modEnd - modStart
         log.debug("{0} finished in {1}.".format(dn, modRuntime))
 
@@ -638,7 +638,7 @@ if __name__ == "__main__":
     for i in quarantine_remove:
         subq_remove(i)
 
-    startTime = datetime.utcnow()
+    startTime = datetime.now(timezone.utc)
 
     # Set environmental variable TZ to UTC.
     os.environ['TZ'] = 'UTC'
@@ -868,7 +868,7 @@ if __name__ == "__main__":
         tarball = gz_tar(full_prefix)
 
     # Get program end time.
-    endTime = datetime.utcnow()
+    endTime = datetime.now(timezone.utc)
     total_runTime = endTime - startTime
     log.info("Finished program at {0}.".format(endTime))
     log.info("Total runtime: {0}.".format(total_runTime))
